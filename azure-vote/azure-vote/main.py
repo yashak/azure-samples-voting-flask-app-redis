@@ -67,10 +67,16 @@ if ("TITLE" in os.environ and os.environ['TITLE']):
 else:
     title = app.config['TITLE']
 
+# Redis Connection
+r = redis.Redis()
+
+"""
+# The commented section below is used while deploying the application with two separate containers - 
+# One container for Redis and another for the frontend. 
+
 # Redis configurations
 redis_server = os.environ['REDIS']
 
-# Redis Connection
 try:
     if "REDIS_PWD" in os.environ:
         r = redis.StrictRedis(host=redis_server,
@@ -81,6 +87,7 @@ try:
     r.ping()
 except redis.ConnectionError:
     exit('Failed to connect to Redis, terminating.')
+"""
 
 # Change title to host name to demo NLB
 if app.config['SHOWHOST'] == "true":
@@ -138,4 +145,7 @@ def index():
             return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
 
 if __name__ == "__main__":
-    app.run()
+    # comment line below when deploying to VMSS
+    app.run() # local
+    # uncomment the line below before deployment to VMSS
+    # app.run(host='0.0.0.0', threaded=True, debug=True) # remote
