@@ -1,11 +1,9 @@
-# Part 2. Local Environment Setup (Optional)
+# Local Environment Setup
+### 1. **Install Redis** 
+Download and install Redis server for your operating system: [Linux](https://redis.io/download), [MacOS](https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298), or [Windows](https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows)
 
-If you want to run the application on localhost, follow the next steps; otherwise, you can skip to the **Azure Environment Setup** section next. 
-
-
-1. **Install Redis** - Download and install Redis server for your operating system: [Linux](https://redis.io/download), [MacOS](https://medium.com/@petehouston/install-and-config-redis-on-mac-os-x-via-homebrew-eb8df9a4f298), or [Windows](https://riptutorial.com/redis/example/29962/installing-and-running-redis-server-on-windows)
-
-2. **Start Redis** - Start and verify the Redis server:
+### 2. **Start Redis**
+Start and verify the Redis server:
 ```bash
 # Mac
 redis-server /usr/local/etc/redis.conf
@@ -18,7 +16,8 @@ redis-cli.exe
 redis-cli ping
 ```
 
-3. **Create a Virtual Environment** (Optional) - It's your choice to work in a virtual environment. For this, you must have the [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html#via-pip) installed. Then, create and activate a virtual environment:
+### 3. **Create a Virtual Environment** (Optional)
+It's your choice to work in a virtual environment. For this, you must have the [virtualenv](https://virtualenv.pypa.io/en/latest/installation.html#via-pip) installed. Then, create and activate a virtual environment:
 ```bash
 # Navigate to the azure-vote/ folder 
 cd azure-vote/
@@ -32,14 +31,17 @@ py -3 -m venv .venv
 .venv\Scripts\activate
 ```
 
-4. **Dependencies** - Install dependencies from *requirements.txt*:
+### 4. **Dependencies**
+Install dependencies from *requirements.txt*:
 ```bash
 # Run this command from the parent directory where you have the requirements.txt file
 pip install -r requirements.txt
 ``` 
 
-5. Run the application:
+### 5. Run the application:
 ```bash
+# Navigate to the azure-vote/ folder if not already
+cd azure-vote/
 python main.py
 ```
 
@@ -47,5 +49,4 @@ python main.py
 >```py
 >app.run(host='0.0.0.0', threaded=True, debug=True)
 >```
-
 ---
