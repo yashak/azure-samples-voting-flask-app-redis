@@ -3,5 +3,5 @@ RUN pip install redis
 RUN pip install opencensus
 RUN pip install opencensus-ext-azure
 RUN pip install opencensus-ext-flask
-#RUN pip install flask
+RUN pip install flask
 ADD /azure-vote /app
